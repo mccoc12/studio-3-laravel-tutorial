@@ -137,12 +137,15 @@ class TodosController extends Controller
      */
     public function destroy($id)
     {
-         //Delete the Todo
-    $todo = Todo::findOrFail($id);
-    $todo->delete();
-    //Redirect to a specified route with flash message.
-    return redirect()
-        ->route('todos.index')
-        ->with('status','Deleted the selected Todo!');
+          //Delete the Todo
+        $todo = Todo::findOrFail($id);
+        $todo->delete();
+
+        // Todo::destroy([id]) is also avaliable
+
+        //Redirect to a specified route with flash message.
+        return redirect()
+            ->route('todos.index')
+            ->with('status','Deleted the selected Todo!');
     }
 }
